@@ -24,7 +24,7 @@
 
 <div class="mx-auto flex h-screen max-w-lg flex-col items-center justify-center space-y-2 p-4">
 	{#each tasks as task}
-		<Task text={task.text} completed={task.completed} />
+		<Task bind:text={task.text} bind:completed={task.completed} />
 	{/each}
 	<button
 		aria-label="Add Task"

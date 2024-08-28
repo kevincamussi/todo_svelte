@@ -9,5 +9,10 @@
 		class="ml-auto cursor-pointer accent-purple-600"
 		bind:checked={completed}
 	/>
-	<span>{text}</span>
+	<input
+		type="text"
+		bind:value={text}
+		class="disabled:line-through disabled:opacity-50"
+		disabled={completed}
+	/>
 </div>
