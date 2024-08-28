@@ -1,14 +1,35 @@
-<script>
+<script lang="ts">
 	import Task from '$lib/Task.svelte';
+
+	interface ITask {
+		text: string;
+		completed: boolean;
+	}
+
+	export let tasks: ITask[] = [
+		{ text: 'My task', completed: false },
+		{ text: 'My task 2 ', completed: true }
+	];
+
+	export const addTasks = () => {
+		tasks = [
+			...tasks,
+			{
+				text: 'Teste',
+				completed: false
+			}
+		];
+	};
 </script>
 
 <div class="mx-auto flex h-screen max-w-lg flex-col items-center justify-center space-y-2 p-4">
-	<Task />
-	<Task />
-	<Task />
-	<Task />
+	{#each tasks as task}
+		<Task text={task.text} completed={task.completed} />
+	{/each}
 	<button
+		aria-label="Add Task"
 		class=" flex w-full items-center justify-center space-x-2 rounded-lg border-2 border-dashed border-neutral-300 p-3 text-neutral-500"
+		on:click={addTasks}
 		><svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
